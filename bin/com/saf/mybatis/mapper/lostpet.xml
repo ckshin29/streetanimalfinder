@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Lostpet">
+
+	<select id="selectAll" parameterType="map" resultType="lostpetDTO">
+		select lpnumber, lparea1, lparea2, lparea3, lpspecies, lpgender, lpcolor, lpbreed, lpstatus, lpcontent, unum, lptime, lpimage
+		from lostpet lp join user u 
+		on lp.unum = u.unum
+
+		order by 1 desc limit #{startRow}, #{rowCount}
+	</select>
+	
+	
+	<!-- 게시글 상세보기(전체 정보 조회) -->
+	<select id="selectDetail" parameterType="_int" resultType="lostpetDTO">
+		select lpnumber, lparea1, lparea2, lparea3, lpspecies, lpgender, lpcolor, lpbreed, lpstatus, lpcontent, unum, lptime, lpimage
+		from lostpet lp join user u
+		on  lp.unum = u.num and lpnumber = #{lpnumber}
+	</select>
+	
+	
+	
+	<!-- 게시글 작성 -->
+
+	<insert id="insert" parameterType="lostpetVO">
+		insert into lostpet (select lparea1, lparea2, lparea3, lpspecies, lpgender, lpcolor, lpbreed, lpimage, lpstatus, lptime, lpcontent) 
+		values(#{lparea1},#{lparea2},#{lparea3}, #{lpspecies}, #{lpgender}, #{lpcolor}, #{lpbreed}, #{lpimage}, #{lpstatus}, #{lptime}, #{lpcontent} )
+	</insert>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete" parameterType="_int">
+		delete from lostpet where lpnumber = #{lpnumber}
+	</delete>
+	
+	<!-- 게시글 수정 -->
+	<update id="update" parameterType="lostpetVO">
+		update lostpet
+		set lparea1=#{lparea1}, lparea2=#{lparea2}, lparea3=#{lparea3}, lpspecies=#{lpspecies}, lpgender=#{lpgender}, lpcolor=#{lpcolor}, lpbreed=#{lpbreed}, lpimage=#{lpimage}, lpstatus=#{lpstatus}, lptime=#{lptime}, lpcontent=#{lpcontent}
+		where lpnumber = #{lpnumber}
+	</update>
+	
+
+
+
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

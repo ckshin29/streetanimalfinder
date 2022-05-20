@@ -1,0 +1,5 @@
+package com.saf.app.user.controller;
+
+public class UserUpdate {
+
+}

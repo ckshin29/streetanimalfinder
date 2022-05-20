@@ -1,0 +1,5 @@
+package com.saf.app.lostpet.controller;
+
+public class FileDownloadOk {
+
+}

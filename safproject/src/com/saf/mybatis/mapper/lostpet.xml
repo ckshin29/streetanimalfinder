@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Public 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Lostpet">
+
+<!-- 실종동물 작성 -->
+	<insert id="insert" parameterType="lostpetVO">
+		insert into lostpet (lparea1, lparea2, lparea3, lpspecies, lpgender, lpcolor, lpbreed, lpimage, lptime, lpcontent, unum) 
+		values(#{lparea1},#{lparea2},#{lparea3}, #{lpspecies}, #{lpgender}, #{lpcolor}, #{lpbreed}, #{lpimage},#{lptime}, #{lpcontent},#{unum})
+	</insert>
+
+
+
+
+
+		<!-- 최근 실종동물 번호 -->
+	<select id="getSeq" resultType="_int">
+		select lpnumber from lostpet
+		order by 1 desc limit 0, 1;
+	</select>
+	
+	
+			<!-- 첨부파일 추가 -->
+	<insert id="imginsert" parameterType="LostPetFilesVO">
+		insert into file (fname,  foriginal, lpnumber) 
+		values(#{fname}, #{foriginal}, #{lpnumber} )
+	</insert>
+	
+	
+	
+	
+</mapper>

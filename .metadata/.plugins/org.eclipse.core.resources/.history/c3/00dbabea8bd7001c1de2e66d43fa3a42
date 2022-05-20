@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="User">
+<<<<<<< HEAD
+
+	<!-- 아이디 중복검사 -->
+	<select id="checkId" parameterType="string" resultType="_int">
+		select count(uid) from user 
+		where uid = #{uid}
+	</select>
+	
+	<!-- 회원 가입 -->
+	<insert id="join" parameterType="userVO">
+
+		insert into user
+		(
+			uid, uphone, upw, uname, uaddr, uemail
+			
+		)
+		values
+		(
+			#{uid}, #{uphone}, #{upw}, #{uname}, #{uaddr}, #{uemail}
+
+		 )
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="map" resultType="_int">
+		select unum from user where uid=#{uid} and upw=#{upw}
+	</select>
+	
+
+	<!-- 회원 정보 수정 -->
+	<update id="update" parameterType="userVO">
+		update user
+		set uphone=#{uphone}, uaddr=#{uaddr}, uemail=#{uemail}
+		where lpnumber = #{lpnumber}
+	</update>
+	
+	<!-- 비밀번호 수정 -->
+	<update id="update" parameterType="userVO">
+		update user
+		set upw=#{upw}
+		where unum = #{unum}
+	</update>
+		
+	
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

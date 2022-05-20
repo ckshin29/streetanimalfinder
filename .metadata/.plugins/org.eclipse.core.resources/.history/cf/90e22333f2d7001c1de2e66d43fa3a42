@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.saf.app.user.vo.UserVO" alias="UserVO"/>
+		<typeAlias type="com.saf.app.board.vo.BoardReplyVO" alias="BoardReplyVO"/>
+		<typeAlias type="com.saf.app.board.vo.BoardReplyDTO" alias="BoardReplyDTO"/>
+		<typeAlias type="com.saf.app.board.vo.BoardVO" alias="BoardVO"/>
+		<typeAlias type="com.saf.app.board.vo.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.saf.app.board.vo.BoardFileVO" alias="BoardFileVO"/>
+		<typeAlias type="com.saf.app.lostpet.vo.LostPetReplyVO" alias="LostpetReplyVO"/>
+		<typeAlias type="com.saf.app.lostpet.vo.LostpetReplyDTO" alias="LostpetReplyDTO"/>
+		<typeAlias type="com.saf.app.lostpet.vo.LostpetVO" alias="LostpetVO"/>
+		<typeAlias type="com.saf.app.lostpet.vo.LostpetDTO" alias="LostpetDTO"/>
+		<typeAlias type="com.saf.app.lostpet.vo.LostpetFileVO" alias="LostpetFileVO"/>
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/streetanimalfinder"/>
+				<property name="username" value="saf"/>
+				<property name="password" value="220516animal"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="com/saf/mybatis/mapper/user.xml"/>
+		<mapper resource="com/saf/mybatis/mapper/board.xml"/>
+		<mapper resource="com/saf/mybatis/mapper/file.xml"/>
+		<mapper resource="com/saf/mybatis/mapper/lostpet.xml"/>
+	</mappers>
+	
+</configuration>
